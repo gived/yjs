@@ -802,10 +802,26 @@ export class YText extends AbstractType {
             }
             case ContentEmbed:
               packStr()
-              ops.push({
+              /**
+               * @type {Object<string,any>}
+               */
+              const attributes = {}
+              let addAttributes = false;
+              for (const [key, value] of currentAttributes) {
+                addAttributes = true;
+                attributes[key] = value
+              }
+              /**
+               * @type {Object<string,any>}
+               */
+              const op = {
                 insert: /** @type {ContentEmbed} */ (n.content).embed
-              })
-              break
+              }
+              if(addAttributes) {
+                console.log(attributes, currentAttributes);
+                op.attributes = attributes
+              }
+              ops.push(op)
             case ContentFormat:
               if (isVisible(n, snapshot)) {
                 packStr()
