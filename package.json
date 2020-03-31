@@ -1,6 +1,6 @@
 {
-  "name": "yjs",
-  "version": "13.0.4",
+  "name": "@gived/yjs",
+  "version": "13.0.5",
   "description": "Shared Editing Library",
   "main": "./dist/yjs.cjs",
   "module": "./dist/yjs.mjs",
@@ -11,7 +11,6 @@
     "test-extensive": "npm run lint && npm run dist && node ./dist/tests.cjs --production --repitition-time 10000",
     "dist": "rm -rf dist && rollup -c && tsc",
     "watch": "rollup -wc",
-    "postinstall": "rm -rf dist && rollup -c",
     "lint": "markdownlint README.md && standard && tsc",
     "docs": "rm -rf docs; jsdoc --configure ./.jsdoc.json --verbose --readme ./README.md --package ./package.json || true",
     "serve-docs": "npm run docs && http-server ./docs/",
